@@ -66,6 +66,10 @@ class Request extends Component
             return;
         }
 
+        if (isset($user) && !$user->can('accessCp')) {
+            return;
+        }
+
         if (isset($user) &&
             $verify->isEnabled($user) &&
             !$verify->isVerified($user)
